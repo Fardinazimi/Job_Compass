@@ -12,7 +12,6 @@ dist
 dist-ssr
 *.local
 
-firebaseConfig.ts
 
 # Editor directories and files
 .vscode/*
@@ -25,4 +24,4 @@ firebaseConfig.ts
 *.sln
 *.sw?
 .env
-.firebaseConfig.template.ts
+
