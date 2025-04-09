@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import {
   Box,
-  Container,
   Typography,
   TextField,
   Switch,
@@ -11,10 +10,7 @@ import {
   Paper,
   FormControlLabel,
   Alert,
-  CircularProgress,
-  Divider,
   Avatar,
-  IconButton,
 } from "@mui/material";
 import { PhotoCamera } from "@mui/icons-material";
 import { ThemeContext } from "../state/ThemeContext";
@@ -32,7 +28,7 @@ interface UserSettings {
 const SettingsPage: React.FC = () => {
   const navigate = useNavigate();
   const { mode, toggleMode } = useContext(ThemeContext);
-  const [loading, setLoading] = useState(true);
+
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -114,8 +110,6 @@ const SettingsPage: React.FC = () => {
     } catch (error) {
       console.error("Error fetching settings:", error);
       setError(error instanceof Error ? "Unable to load settings" : "");
-    } finally {
-      setLoading(false);
     }
   };
 
@@ -230,15 +224,13 @@ const SettingsPage: React.FC = () => {
     e.preventDefault();
     setError("");
     setSuccess("");
-    setLoading(true);
-
     // Validate inputs
     if (
       profileChanges.newName &&
       profileChanges.newName !== profileChanges.confirmNewName
     ) {
       setError("Name confirmation does not match");
-      setLoading(false);
+
       return;
     }
 
@@ -247,7 +239,7 @@ const SettingsPage: React.FC = () => {
       profileChanges.newEmail !== profileChanges.confirmNewEmail
     ) {
       setError("Email confirmation does not match");
-      setLoading(false);
+
       return;
     }
 
@@ -279,7 +271,7 @@ const SettingsPage: React.FC = () => {
       if (passwords.newPassword) {
         if (passwords.newPassword !== passwords.confirmPassword) {
           setError("New passwords do not match");
-          setLoading(false);
+    
           return;
         }
         updatePayload.currentPassword = passwords.currentPassword;
@@ -333,8 +325,6 @@ const SettingsPage: React.FC = () => {
         error.response?.data?.message ||
           "Failed to update settings. Please try again."
       );
-    } finally {
-      setLoading(false);
     }
   };
 

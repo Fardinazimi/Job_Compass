@@ -4,7 +4,7 @@ import {
   Card,
   CardContent,
   Container,
-  useTheme,
+
   keyframes,
 } from "@mui/material";
 import office from "../assets/office.jpeg";
@@ -22,7 +22,7 @@ const float = keyframes`
 
 
 const LandingPage = () => {
-  const theme = useTheme();
+
 
   return (
     <>

@@ -50,7 +50,8 @@ const SignInPage = () => {
   };
 
   const handleGoogleLogin = async () => {
-    const user = await signInWithGoogle();
+    const result = await signInWithGoogle();
+    const user = result.user;
     if (user && user.displayName && user.email) {
       try {
         const response = await axios.post("/api/auth/google-login", {
@@ -70,7 +71,8 @@ const SignInPage = () => {
   };
 
   const handleFacebookLogin = async () => {
-    const user = await signInWithFacebook();
+    const result = await signInWithFacebook();
+    const user = result.user;
     if (user && user.displayName && user.email) {
       try {
         const response = await axios.post("/api/auth/facebook-login", {

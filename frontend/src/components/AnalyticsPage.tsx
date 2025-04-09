@@ -40,7 +40,7 @@ const AnalyticsPage = () => {
   const [analytics, setAnalytics] = useState<AnalyticsData | null>(null);
   const [view, setView] = useState<"monthly" | "yearly">("monthly");
   const theme = useTheme();
-  const { mode } = useContext(ThemeContext);
+  useContext(ThemeContext); // Theme context is used for theme switching
 
   useEffect(() => {
     const token = localStorage.getItem("token");

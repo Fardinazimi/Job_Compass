@@ -190,10 +190,7 @@ const HomePage = () => {
     setSortOrder(order);
   };
 
-  const handlePageChange = (
-    event: React.ChangeEvent<unknown>,
-    value: number
-  ) => {
+  const handlePageChange = (_: React.ChangeEvent<unknown>, value: number) => {
     setPage(value);
   };
 
@@ -377,12 +374,11 @@ const HomePage = () => {
           sx={{
 
             fontWeight: 500,
-            color: theme.palette.mode === "light" ? "#333" : "#fff",
+            color: mode === "light" ? "#121212" : "#ffffff",
             textShadow:
-              theme.palette.mode === "light"
+              mode === "light"
                 ? "1px 1px 2px rgba(0, 0, 0, 0.2)"
                 : "1px 1px 2px rgba(255, 255, 255, 0.2)",
-            color: mode === "light" ? "#121212" : "#ffffff",
             fontSize: {
               xs: "2rem",
               sm: "2.5rem",

@@ -67,7 +67,8 @@ const RegisterPage = () => {
   };
 
   const handleGoogleRegister = async () => {
-    const user = await signInWithGoogle();
+    const result = await signInWithGoogle();
+    const user = result.user;
     if (user && user.displayName && user.email) {
       try {
         const response = await axios.post(
